@@ -29,7 +29,7 @@ def get_cities():
 @app.route('/api/city', methods=['POST'])
 @cross_origin(origin='localhost', headers=['Content- Type', 'Authorization'])
 def add_city():
-    city_name = request.get_json()['name']
+    city_name = request.get_json()['name'].lower().capitalize()
     return _add_city(city_name)
 
 @app.route('/api/update', methods=['PUT'])
