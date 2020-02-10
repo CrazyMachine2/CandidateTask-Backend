@@ -71,7 +71,6 @@ def _add_city(city_name):
     if not metric_resp:
         return jsonify(MESSAGES.get('UNSUCCESS'))
 
-    #
     metric_json = metric_resp.json()
     imperial_json = imperial_resp.json()
     new_city = City(name=city_name, temp_celsius=int(metric_json[MAIN][TEMPERATURE]), temp_fahrenheit=int(imperial_json[MAIN][TEMPERATURE]))

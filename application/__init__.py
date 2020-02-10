@@ -6,7 +6,6 @@ from flask_cors import CORS
 #Init app
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///cities.db'
-app.config['SECRET_KEY'] = 'secretkey'
 app.config['CORS_HEADERS'] = 'Content-Type'
 db = SQLAlchemy(app)
 ma = Marshmallow(app)
