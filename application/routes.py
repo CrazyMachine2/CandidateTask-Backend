@@ -44,8 +44,8 @@ def update():
 def is_name_taken():
     """Checks if name is taken"""
     name = request.args.get('name').lower().capitalize()
-    city = City.query.filter_by(name=name).all()
-    return jsonify(cities_schema.dump(city)) if city else jsonify([])
+    city = City.query.filter_by(name=name).first()
+    return jsonify(city_schema.dump(city)) if city else {}
 
 #Private methods
 def _get_open_weather_requests(city_name):
