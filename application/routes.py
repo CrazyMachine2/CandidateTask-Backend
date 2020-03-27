@@ -47,6 +47,7 @@ def is_name_taken():
     city = City.query.filter_by(name=name).first()
     return jsonify(city_schema.dump(city)) if city else {}
 
+
 #Private methods
 def _get_open_weather_requests(city_name):
     metric_url = URL_TEMPLATE % (city_name, METRIC)
@@ -60,7 +61,7 @@ def _get_open_weather_requests(city_name):
 def _add_city(city_name):
     """ Adds a new city to the database. 
     """
-
+    
     #Checks if city exist, if exist returns ALREADY_EXIST message
     if City.query.filter_by(name=city_name).first():
         return jsonify(MESSAGES.get('ALREADY_EXIST_MESSAGE'))
@@ -85,7 +86,7 @@ def _update_on_refresh():
     """
     cities = City.query.all()
 
-#Iterates over all cities in the database and updates their value
+    #Iterates over all cities in the database and updates their value
     for city in cities:
         metric_resp, imperial_resp = _get_open_weather_requests(city.name)
 
